@@ -1,0 +1,94 @@
+1.first create a repo in github
+
+2.create a local repo(on your system) and create a folder right click git bash here and 
+
+command: git init(create a .git folder in it )and then 
+
+3.connect your remote repo to local repo 
+
+command: git remote add origin "https link from clone the repo in github"(this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
+
+4.pull the files form remote repo
+
+command:git pull origin master
+
+5.there is a layer in between our workspace or local repo so we need to first add files to index layer then we will  commit to local repo
+
+command git status(used to saw which file is added to index layer or which are not)
+command git add file.txt(used to add files to index layer or we can also use (git add * or git add -A same with all command or git commit .(dot for all files) )it will add all files )
+
+6.commit to local repo
+
+command:git commit -m "commment"(commit to local repo -m flag is used to give message)
+
+7.git log(To saw the log or we can also use -before='date' or -- author='name 'or --oneline )
+
+8.create a branch
+
+command:git branch BranchName(when we create branch from master branch . bash prompt after crerting branch it will prompt in master branch we have to swicth to branch we have created)
+
+ShortCut:command: git chcekout -b branchname (create th ebranch and switch to it )
+
+command:git checkout branchName(switch to oarticukar branch)
+
+9.git merge branchName(from master branch in prompt we give that command it will merge into master branch)
+
+10.git rebase branchname(we have done the chnages in branch and we want that chnages happen in its sub  branch automatically ,so we use this command and here BranchName branch will be in head node of a tree and from which branch we are prompt is sub of it)
+
+
+12.if we want to push the chnages in localrepo to github repo 
+command:git push originbranchName (if branch exist in local repo it will create the branch in remote repo or git push -u origin master ask for username and password)
+
+13.we can rollback to previous version first we have to give
+
+command: git log (from here we have to copy the first 8bit of hashcode of various chnages)then
+command :git revert hashcode (or we can return to before last commit using git commit HEAD) 
+
+
+Second lacture
+14.git branch(from master branch prompt gives all branches names )
+
+
+15.git diff(diff between thw working file and the commited file in local repo)
+....******
+if we added a file in index layer and then we have updated the file and again we want to commit the changes we have not to again add file into index layer it will automatically add if we commit the files 
+
+16.create a stash 
+command:git stash save "comment"(it will create a stash its like a savepoint in oracle sql that can be apllied to branch and note the stash id )
+and 
+command:git stash apply stashId(it will aplly the stash to particukar branch from which we are applying it )
+17.git stash list(give list of all stash avilable)
+  git stash shoe(more about stash)
+
+18. delete the branch 
+git branch -d branchName (delete the branch)
+
+
+19. command:git clone "ssh link"(download the whole project )
+---diff between git pull and git fetch (git pull= gitfetch +git merge here git fetch will create a new branch in local repo)
+
+
+20.connect through ssh 
+      Genrate a ssh key and add it to github: 
+      so we will create ssh key to authenticate the user who can do the chnages take the ssh url from repo cloning
+
+command:ssh-keygen(prompt to y/n and genrate ta file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt command: ssh -T git@github.com
+
+
+21.git config (there are many configuration setting it show how to assign these setting)
+    we can do it globally or local to the repo 
+    Globally :command:git config --global user.name "githubusername"(then enter and again for password)git config --global user.email     "emailof user" "githubusername"(enter)
+    
+22. git log 
+
+  gitlog --oneline
+
+
+23.merge conflict(how to solve it )
+  1.centralized merge(there a repo 2 person have pulll that repo and 1 chnaged it and push but the other person don't know about that so   that create a conflict when the second user push own code so to resolve it use )
+  command:git pull --rebase origin master
+  or then we can saw the conflict using git status
+  then 
+  command :git mergetool
+  git rebase --continue
+  
