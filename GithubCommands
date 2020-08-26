@@ -72,7 +72,8 @@ git branch -d branchName (delete the branch)
       Genrate a ssh key and add it to github: 
       so we will create ssh key to authenticate the user who can do the chnages take the ssh url from repo cloning
 
-command:ssh-keygen(prompt to y/n and genrate ta file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt command: ssh -T git@github.com
+command:ssh-keygen(prompt to y/n and genrate ta file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt 
+command: ssh -T git@github.com
 
 
 21.git config (there are many configuration setting it show how to assign these setting)
