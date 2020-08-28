@@ -90,6 +90,6 @@ command: ssh -T git@github.com
   command:git pull --rebase origin master
   or then we can saw the conflict using git status
   then 
-  command :git mergetool
+  command :git mergetool 
   git rebase --continue
   
