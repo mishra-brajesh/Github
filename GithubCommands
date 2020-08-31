@@ -27,7 +27,7 @@ command:git commit -m "commment"(commit to local repo -m flag is used to give me
 
 command:git branch BranchName(when we create branch from master branch . bash prompt after crerting branch it will prompt in master branch we have to swicth to branch we have created)
 
-ShortCut:command: git chcekout -b branchname (create th ebranch and switch to it )
+ShortCut:command: git chcekout -b branchname (create th ebranch and switch to it ) 
 
 command:git checkout branchName(switch to oarticukar branch)
 
@@ -88,8 +88,8 @@ command: ssh -T git@github.com
 23.merge conflict(how to solve it )
   1.centralized merge(there a repo 2 person have pulll that repo and 1 chnaged it and push but the other person don't know about that so   that create a conflict when the second user push own code so to resolve it use )
   command:git pull --rebase origin master
-  or then we can saw the conflict using git status
+  or then we can saw the conflict using git status 
   then 
-  command :git mergetool 
+  command :git mergetool  
   git rebase --continue
   
