@@ -1,5 +1,5 @@
 1.first create a repo in github
-
+ 
 2.create a local repo(on your system) and create a folder right click git bash here and 
 
 command: git init(create a .git folder in it )and then 
