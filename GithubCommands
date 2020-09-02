@@ -2,7 +2,7 @@
  
 2.create a local repo(on your system) and create a folder right click git bash here and 
 
-command: git init(create a .git folder in it )and then 
+command: git init(create a .git folder in it )and then  
 
 3.connect your remote repo to local repo 
 
