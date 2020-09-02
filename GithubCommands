@@ -7,7 +7,7 @@ command: git init(create a .git folder in it )and then
 3.connect your remote repo to local repo 
 
 command: git remote add origin "https link from clone the repo in github"(this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
-
+ 
 4.pull the files form remote repo
 
 command:git pull origin master
