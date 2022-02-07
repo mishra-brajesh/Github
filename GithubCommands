@@ -1,95 +1,125 @@
-1.first create a repo in github
- 
-2.create a local repo(on your system) and create a folder right click git bash here and 
+What is git?
+Ans: Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+and that can be downloaded from official website https://git-scm.com/
 
-command: git init(create a .git folder in it )and then   
+Notes:
+1. Git command prompt works based on UNIX commands.
+2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named.gitignore . 
+You can find helpful templates for .gitignore files at github.com/github/gitignore.
+3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
+when using git checkout
 
-3.connect your remote repo to local repo 
+Commands:
 
-command: git remote add origin "https link from clone the repo in github"(this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
- 
-4.pull the files form remote repo
+1. Create repositories
+   When starting out with a new repository, you only need to do it
+   once; either locally, then push to GitHub, or by cloning an
+   existing repository.
 
-command:git pull origin master
+   $ git init(creates a .git folder in it )
+   Turn an existing directory into a git repository
 
-5.there is a layer in between our workspace or local repo so we need to first add files to index layer then we will  commit to local repo
-
-command git status(used to saw which file is added to index layer or which are not)
-command git add file.txt(used to add files to index layer or we can also use (git add * or git add -A same with all command or git commit .(dot for all files) )it will add all files )
-
-6.commit to local repo
-
-command:git commit -m "commment"(commit to local repo -m flag is used to give message)
-
-7.git log(To saw the log or we can also use -before='date' or -- author='name 'or --oneline )
-
-8.create a branch
-
-command:git branch BranchName(when we create branch from master branch . bash prompt after crerting branch it will prompt in master branch we have to swicth to branch we have created)
-
-ShortCut:command: git chcekout -b branchname (create th ebranch and switch to it ) 
-
-command:git checkout branchName(switch to oarticukar branch)
-
-9.git merge branchName(from master branch in prompt we give that command it will merge into master branch)
-
-10.git rebase branchname(we have done the chnages in branch and we want that chnages happen in its sub  branch automatically ,so we use this command and here BranchName branch will be in head node of a tree and from which branch we are prompt is sub of it)
-
-
-12.if we want to push the chnages in localrepo to github repo 
-command:git push originbranchName (if branch exist in local repo it will create the branch in remote repo or git push -u origin master ask for username and password)
-
-13.we can rollback to previous version first we have to give
-
-command: git log (from here we have to copy the first 8bit of hashcode of various chnages)then
-command :git revert hashcode (or we can return to before last commit using git commit HEAD) 
-
-
-Second lacture
-14.git branch(from master branch prompt gives all branches names )
-
-
-15.git diff(diff between thw working file and the commited file in local repo)
-....******
-if we added a file in index layer and then we have updated the file and again we want to commit the changes we have not to again add file into index layer it will automatically add if we commit the files 
-
-16.create a stash 
-command:git stash save "comment"(it will create a stash its like a savepoint in oracle sql that can be apllied to branch and note the stash id )
-and 
-command:git stash apply stashId(it will aplly the stash to particukar branch from which we are applying it )
-17.git stash list(give list of all stash avilable)
-  git stash shoe(more about stash)
-
-18. delete the branch 
-git branch -d branchName (delete the branch)
-
-
-19. command:git clone "ssh link"(download the whole project )
----diff between git pull and git fetch (git pull= gitfetch +git merge here git fetch will create a new branch in local repo)
-
-
-20.connect through ssh 
+   $ git clone [url]
+   Clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits
+   
+   2.connect through ssh 
       Genrate a ssh key and add it to github: 
       so we will create ssh key to authenticate the user who can do the chnages take the ssh url from repo cloning
 
-command:ssh-keygen(prompt to y/n and genrate ta file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt 
+command:ssh-keygen(prompt to y/n and genrate a file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt 
 command: ssh -T git@github.com
 
 
-21.git config (there are many configuration setting it show how to assign these setting)
-    we can do it globally or local to the repo 
-    Globally :command:git config --global user.name "githubusername"(then enter and again for password)git config --global user.email     "emailof user" "githubusername"(enter)
-    
-22. git log 
+2. Configure tooling(Can be done globally or locally to the repo)
+   Configure user information for all local repositories
+   
+   $ git config --global color.ui auto
+   Enables helpful colorization of command line output
 
-  gitlog --oneline
+   $ git config --global user.email "[email address]"
+   Sets the email you want attached to your commit transactions
+
+   $ git config --global user.name "[name]"
+   Sets the name you want attached to your commit transactions
+
+3.connect your remote repo to local repo 
+
+   $ git remote add origin "https link from clone the repo in github"(this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
+ 
+4. Pull the files form from the specified bracnh_name
+
+   $ git pull origin [branch_name]
+
+   Note:
+   1. Difference between git pull and git fetch (git pull= gitfetch +git merge here git fetch will create a new branch in local repo)
+
+
+5. There is a stagging layer in between our workspace or local repo so we need to first add files to stagged/index layer then we will  commit to local repo
+
+   $ git status(used to see what are the files added to stagged/index layer or what are not)
+   
+   $ git add file.txt(used to add files to stagged/index layer or we can also use (git add -A same with all command or git commit .(dot for all files) )it will add all files)
+
+6. Commit to local repo
+
+   $ git commit -m "commment"(commit to local repo -m flag is used to give message)
+   
+7. $ git show [commit]
+   Outputs metadata and content changes of the specified commit
+
+16.create a stash 
+    $ git stash save "comment"(it will create a stash its like a savepoint in oracle sql that can be apllied to branch and note the stash id )
+and 
+    $ git stash apply stashId(it will aplly the stash to particukar branch from which we are applying it )
+
+17. $ git stash list(give list of all stash avilable)
+    $ git stash shoe(more about stash)
+
+15. $ git diff(diff between thw working file and the commited file in local repo)
+    Note:
+    If we added a file in stagged/index layer, then we have updated the file and we want to commit the changes then we don't have to again add file to stagged/index layer it will automatically add if we commit the files from stagged/index layer. 
+
+
+7. $ git log
+   Lists version history for the current branch or we can also use -before='date' or -- author='name' or --oneline 
+
+   $ git log --follow [file]
+   Lists version history for a file, including renames
+
+8. create a branch
+   $ git branch(Prompt all branches names )
+
+   $ git branch [branchName](If we have created branch using this command from master branch then we have to swicth to branch we have created)
+
+   $ git chcekout -b [branchname] (create the branch and switch to it ) 
+
+   $ git checkout [branchName](switch to particukar branch)
+
+9. $ git merge branchName(from master branch in prompt we give that command it will merge into master branch)
+
+10.$ git rebase branchname(we have done the chnages in branch and we want that changes happen in its sub  branch automatically ,so we use this command and here BranchName branch will be in head node of a tree and from which branch we are prompt is sub of it)
+
+11. Delete the branch 
+    $ git branch -d branchName (delete the branch)
+    
+12.    $ git diff [first-branch]...[second-branch]
+    Shows content differences between two branches
+
+
+12.if we want to push the chnages in localrepo to github repo 
+   $ git push origin [branchName] (if branch doesn't exist in remote repo it will create the branch in remote repo or git push -u origin master ask for username and password)
+
+13.we can rollback to previous version first we have to give
+
+  $ git log (from here we have to copy the first 8bit of hashcode of various chnages)then
+  $ git revert hashcode (or we can return to before last commit using $ git commit HEAD) 
 
 
 23.merge conflict(how to solve it )
-  1.centralized merge(there a repo 2 person have pulll that repo and 1 chnaged it and push but the other person don't know about that so   that create a conflict when the second user push own code so to resolve it use )
-  command:git pull --rebase origin master
+  1.centralized merge(there a repo 2 person have pulll that repo and 1 chnaged it and push but the other person don't know about that so that create a conflict when the second user push own code so to resolve it use )
+  $ git pull --rebase origin master
   or then we can saw the conflict using git status 
   then 
-  command :git mergetool  
-  git rebase --continue
+  $ git mergetool  
+  $ git rebase --continue
   
