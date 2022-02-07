@@ -6,6 +6,7 @@ Notes:
 1. Git command prompt works based on UNIX commands.
 2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named.gitignore . 
 You can find helpful templates for .gitignore files at github.com/github/gitignore.
+   $ touch .gitignore(don't create it from using, system get confused)
 3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
 when using git checkout
 
@@ -22,13 +23,10 @@ Commands:
    $ git clone [url]
    Clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits
    
-   2.connect through ssh 
-      Genrate a ssh key and add it to github: 
-      so we will create ssh key to authenticate the user who can do the chnages take the ssh url from repo cloning
-
-command:ssh-keygen(prompt to y/n and genrate a file copy the path and saw using cat command )the in github setting and the ssh key and then from bash prompt 
-command: ssh -T git@github.com
-
+   $ git clone [url] FolderName
+   Clone (download) a repository that already exists on GitHub within the specified folder name, including all of the files, branches, and commits
+   
+   
 
 2. Configure tooling(Can be done globally or locally to the repo)
    Configure user information for all local repositories
@@ -44,8 +42,20 @@ command: ssh -T git@github.com
 
 3.connect your remote repo to local repo 
 
-   $ git remote add origin "https link from clone the repo in github"(this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
+   $ git remote add origin "https link from clone the repo in github"(Add the repo/remote with name origin or this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
+   Note:
+   Here we have added the origin but still we can don't have read/write access, So we can add a SSH key which will ever authenticate our system for any read/write.
+   
+   $ git remote(List of remote reportsitory)
  
+   $ git remote -v (give fetch and push url for list of remote)
+   
+   $ git remote set-url [RemoteName] [url](If we want to change the URL or our remote)
+ 
+2. Genrate a SSH key and add it to github(If it's a private repository): 
+   It will authenticate the system who can do the chnages,Take the ssh url from repo cloning
+
+
 4. Pull the files form from the specified bracnh_name
 
    $ git pull origin [branch_name]
@@ -56,13 +66,20 @@ command: ssh -T git@github.com
 
 5. There is a stagging layer in between our workspace or local repo so we need to first add files to stagged/index layer then we will  commit to local repo
 
-   $ git status(used to see what are the files added to stagged/index layer or what are not)
+   $ git status(used to see what are the files added to stagged/index layer or what are not, Untracked files will be in red colour and Tracked files will be in green colour)
+   $ git status -s (Provide short summary, Same as git status)
    
    $ git add file.txt(used to add files to stagged/index layer or we can also use (git add -A same with all command or git commit .(dot for all files) )it will add all files)
 
 6. Commit to local repo
 
-   $ git commit -m "commment"(commit to local repo -m flag is used to give message)
+   $ git commit -m "commment"(commit to local repo -m flag is used to give message) RECOMMENDED
+   
+   $ git commit(opens the VIM editor where we can paas our message)
+   
+   $ git commit -am "commment" or $ git commit -a -m "commment"(Commit the changes from local direcoty to local repo direcltly without adding to stagging area)NOT RECOMMENDED
+   Note:
+   If the file was not tracked before(Newly created file) then we have to first add to stagging area then we can commit, git commit -a -m "commment"(This command will not work for newly created file)
    
 7. $ git show [commit]
    Outputs metadata and content changes of the specified commit
@@ -75,16 +92,25 @@ and
 17. $ git stash list(give list of all stash avilable)
     $ git stash shoe(more about stash)
 
-15. $ git diff(diff between thw working file and the commited file in local repo)
+15. $ git diff(diff between the working directory and the stagged directory)
     Note:
     If we added a file in stagged/index layer, then we have updated the file and we want to commit the changes then we don't have to again add file to stagged/index layer it will automatically add if we commit the files from stagged/index layer. 
-
+   
+    $ git diff --stagged(diff between the stagged directory and commited directory)
+    
 
 7. $ git log
    Lists version history for the current branch or we can also use -before='date' or -- author='name' or --oneline 
 
    $ git log --follow [file]
    Lists version history for a file, including renames
+   
+   $ git log -p NumberOfLatestLogs(Gives the same details as git diff command)
+   Lists version history for the current branch for NumberOfLatestLogs
+   
+8. $ git rm --cached [file_name](Remove the file from stagged area)
+
+   $ git rm [file_name](remove the file from direcory)
 
 8. create a branch
    $ git branch(Prompt all branches names )
@@ -94,6 +120,11 @@ and
    $ git chcekout -b [branchname] (create the branch and switch to it ) 
 
    $ git checkout [branchName](switch to particukar branch)
+
+   $ git checkout [FileName](If we have done some changes in A.txt and we want to rollback to the last commited data in file A.txt)
+   
+   $ git checkout -f (Rollback to the last commited data in all the files)
+
 
 9. $ git merge branchName(from master branch in prompt we give that command it will merge into master branch)
 
@@ -108,7 +139,9 @@ and
 
 12.if we want to push the chnages in localrepo to github repo 
    $ git push origin [branchName] (if branch doesn't exist in remote repo it will create the branch in remote repo or git push -u origin master ask for username and password)
-
+   
+   $ git push -u origin [branchName] (It will push the code in branchName and next time we can just use git push and it will automatically push in branchname, we don't have to define everytime)
+   
 13.we can rollback to previous version first we have to give
 
   $ git log (from here we have to copy the first 8bit of hashcode of various chnages)then
