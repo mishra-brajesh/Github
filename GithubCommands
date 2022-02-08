@@ -6,7 +6,7 @@ Notes:
 1. Git command prompt works based on UNIX commands.
 2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named.gitignore . 
 You can find helpful templates for .gitignore files at github.com/github/gitignore.
-   $ touch .gitignore(don't create it from using, system get confused)
+$ touch .gitignore(don't create it from using, system get confused)
 3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
 when using git checkout
 
@@ -14,7 +14,7 @@ Commands:
 
 1. Create repositories
    When starting out with a new repository, you only need to do it
-   once; either locally, then push to GitHub, or by cloning an
+   once; either locally, then push to GitHub(First we need to create a github repo then connect to remote repo have read/write access to your system, then push it), or by cloning an
    existing repository.
 
    $ git init(creates a .git folder in it )
@@ -67,7 +67,7 @@ Commands:
 5. There is a stagging layer in between our workspace or local repo so we need to first add files to stagged/index layer then we will  commit to local repo
 
    $ git status(used to see what are the files added to stagged/index layer or what are not, Untracked files will be in red colour and Tracked files will be in green colour)
-   $ git status -s (Provide short summary, Same as git status)
+   $ git status -s (Provide short summary, Same as git status, Here first col represent stagging area and second col rep working area)
    
    $ git add file.txt(used to add files to stagged/index layer or we can also use (git add -A same with all command or git commit .(dot for all files) )it will add all files)
 
