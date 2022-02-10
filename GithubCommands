@@ -13,6 +13,8 @@ HEAD that always refers to the most recent commit in the current branch.
 HEAD~1 being the second newest commit in the local repo,
 4. The very first time you try to clone a private repo from a remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
 5. After you provide authentication once, Git caches your credentials in memory and hands them out on demand. If the git config credential.helper command return manager, the password is stored in the windows credential manager, if it returns store, password is stored in a .git-credentials file in the user folder and if it returns oskeychain it’s stored in keychain.
+6. Switch from the local branch (master) to the remote branch (origin/master) and enter a so called ‘detached HEAD state’. This allows you to explore what has been committed to remote repo by your colleagues.
+
 Commands:
 
 1. Create repositories
@@ -167,6 +169,7 @@ and
 
   $ git log (from here we have to copy the first 8bit of hashcode of various chnages)then
   $ git revert hashcode (or we can return to before last commit using $ git commit HEAD) 
+  $ git reset -hard HEAD(Need to check)
 
 
 23.merge conflict(how to solve it )
