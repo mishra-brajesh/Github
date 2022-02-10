@@ -8,8 +8,11 @@ Notes:
 You can find helpful templates for .gitignore files at github.com/github/gitignore.
 $ touch .gitignore(don't create it from using, system get confused)
 3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
-when using git checkout
-
+when using git checkout, 
+HEAD that always refers to the most recent commit in the current branch.
+HEAD~1 being the second newest commit in the local repo,
+4. The very first time you try to clone a private repo from a remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
+5. After you provide authentication once, Git caches your credentials in memory and hands them out on demand. If the git config credential.helper command return manager, the password is stored in the windows credential manager, if it returns store, password is stored in a .git-credentials file in the user folder and if it returns oskeychain it’s stored in keychain.
 Commands:
 
 1. Create repositories
@@ -22,6 +25,7 @@ Commands:
 
    $ git clone [url]
    Clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits
+   EX: git clone https://your_username:your_pw@github.com/anbento0490/repo_name.git
    
    $ git clone [url] FolderName
    Clone (download) a repository that already exists on GitHub within the specified folder name, including all of the files, branches, and commits
@@ -40,6 +44,9 @@ Commands:
    $ git config --global user.name "[name]"
    Sets the name you want attached to your commit transactions
 
+   $git config -l
+   Give the list of configuration settings
+   
 3.connect your remote repo to local repo 
 
    $ git remote add origin "https link from clone the repo in github"(Add the repo/remote with name origin or this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
@@ -51,6 +58,9 @@ Commands:
    $ git remote -v (give fetch and push url for list of remote)
    
    $ git remote set-url [RemoteName] [url](If we want to change the URL or our remote)
+   
+   $git remote remove origin
+   Remove the remote with the name origin
  
 2. Genrate a SSH key and add it to github(If it's a private repository): 
    It will authenticate the system who can do the chnages,Take the ssh url from repo cloning
@@ -98,9 +108,13 @@ and
    
     $ git diff --stagged(diff between the stagged directory and commited directory)
     
+    $git diff HEAD~1 HEAD
+    Diff between the last commmited and it's previous commit
+    
 
 7. $ git log
    Lists version history for the current branch or we can also use -before='date' or -- author='name' or --oneline 
+   Each commit is assigned with a 40 char long unique ID or hash.
 
    $ git log --follow [file]
    Lists version history for a file, including renames
@@ -116,6 +130,13 @@ and
    $ git branch(Prompt all branches names )
 
    $ git branch [branchName](If we have created branch using this command from master branch then we have to swicth to branch we have created)
+   
+   $git branch -r
+   To check the list of branch available in remote repo
+   
+   $git branch -a
+   To check the list of branch available in local repo
+   
 
    $ git chcekout -b [branchname] (create the branch and switch to it ) 
 
