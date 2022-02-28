@@ -6,7 +6,7 @@ Notes:
 1. Git command prompt works based on UNIX commands.
 2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named.gitignore . 
 You can find helpful templates for .gitignore files at github.com/github/gitignore.
-$ touch .gitignore(don't create it from using, system get confused)
+$ touch .gitignore(don't create it from using UI, system get confused)
 3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
 when using git checkout, 
 HEAD that always refers to the most recent commit in the current branch.
