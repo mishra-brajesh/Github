@@ -11,15 +11,14 @@ $ touch .gitignore(don't create it from using UI, system get confused)
 when using git checkout, 
 HEAD that always refers to the most recent commit in the current branch.
 HEAD~1 being the second newest commit in the local repo,
-4. The very first time you try to clone a private repo from a remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
+4. The very first time you try to clone a private remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
 5. After you provide authentication once, Git caches your credentials in memory and hands them out on demand. If the git config credential.helper command return manager, the password is stored in the windows credential manager, if it returns store, password is stored in a .git-credentials file in the user folder and if it returns oskeychain it’s stored in keychain.
 6. Switch from the local branch (master) to the remote branch (origin/master) and enter a so called ‘detached HEAD state’. This allows you to explore what has been committed to remote repo by your colleagues.
 
 Commands:
 
 1. Create repositories
-   When starting out with a new repository, you only need to do it
-   once; either locally, then push to GitHub(First we need to create a github repo then connect to remote repo have read/write access to your system, then push it), or by cloning an
+   When starting out with a new repository, you only need to do it once. either create a repo in local system, then push it to GitHub(First we need to create a github repo then connect to remote repo have read/write access to your system, then push it), or by cloning an
    existing repository.
 
    $ git init(creates a .git folder in it )
@@ -68,7 +67,7 @@ Commands:
    It will authenticate the system who can do the chnages,Take the ssh url from repo cloning
 
 
-4. Pull the files form from the specified bracnh_name
+4. Pull the files from the specified bracnh_name
 
    $ git pull origin [branch_name]
 
