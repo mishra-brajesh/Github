@@ -14,6 +14,8 @@ HEAD~1 being the second newest commit in the local repo,
 4. The very first time you try to clone a private remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
 5. After you provide authentication once, Git caches your credentials in memory and hands them out on demand. If the git config credential.helper command return manager, the password is stored in the windows credential manager, if it returns store, password is stored in a .git-credentials file in the user folder and if it returns oskeychain it’s stored in keychain.
 6. Switch from the local branch (master) to the remote branch (origin/master) and enter a so called ‘detached HEAD state’. This allows you to explore what has been committed to remote repo by your colleagues.
+7. git [command] --help #Full summary or git [command] -h #gives short summary
+8. Once we commit the changes to local repo, Files will always be there in stagging area.
 
 Commands:
 
@@ -33,13 +35,14 @@ Commands:
    
    
 
-2. Configure tooling(Can be done globally or locally to the repo)
-   Configure user information for all local repositories
-   
+2. Configure tooling(Can be done in three level 1. global(All repository of current user), 2. local(Current repository), 3. system(All User))
+   Note:
+      1. .gitconfig file get created in ~/.gitconfig path. Here we have all the configuration setting stored in this file.
+      
    $ git config --global color.ui auto
    Enables helpful colorization of command line output
 
-   $ git config --global user.email "[email address]"
+   $ git config --global user.email "[email address]".     #Use double quote if we have space between the values, otherwise we can paas without double quote.
    Sets the email you want attached to your commit transactions
 
    $ git config --global user.name "[name]"
@@ -80,20 +83,21 @@ Commands:
    $ git status(used to see what are the files added to stagged/index layer or what are not, Untracked files will be in red colour and Tracked files will be in green colour)
    $ git status -s (Provide short summary, Same as git status, Here first col represent stagging area and second col rep working area)
    
-   $ git add file.txt(used to add files to stagged/index layer or we can also use (git add -A same with all command or git commit .(dot for all files) )it will add all files)
-
+   $ git add file.txt #Add files to stagged/index layer 
+   $ git add file1.txt file2.txt #Add multiple files to stagging area
+   $ git add *.txt #Add files based on pattern matching
+   $ git add . #Add all the files in stagging area
+   
+   
+   
 6. Commit to local repo
 
    $ git commit -m "commment"(commit to local repo -m flag is used to give message) RECOMMENDED
-   
    $ git commit(opens the VIM editor where we can paas our message)
-   
    $ git commit -am "commment" or $ git commit -a -m "commment"(Commit the changes from local direcoty to local repo direcltly without adding to stagging area)NOT RECOMMENDED
    Note:
    If the file was not tracked before(Newly created file) then we have to first add to stagging area then we can commit, git commit -a -m "commment"(This command will not work for newly created file)
    
-7. $ git show [commit]
-   Outputs metadata and content changes of the specified commit
 
 16.create a stash 
     $ git stash save "comment"(it will create a stash its like a savepoint in oracle sql that can be apllied to branch and note the stash id )
@@ -114,7 +118,7 @@ and
     
 
 7. $ git log
-   Lists version history for the current branch or we can also use -before='date' or -- author='name' or --oneline 
+   Lists version history for the current branch or we can also use -before='date' or -- author='name' or --oneline or --reverse
    Each commit is assigned with a 40 char long unique ID or hash.
 
    $ git log --follow [file]
@@ -123,9 +127,27 @@ and
    $ git log -p NumberOfLatestLogs(Gives the same details as git diff command)
    Lists version history for the current branch for NumberOfLatestLogs
    
-8. $ git rm --cached [file_name](Remove the file from stagged area)
+   $ git show [8 digit hash code from commit]
+   Outputs metadata and content changes done in specified commit
+   
+   $ git show [8 digit hash code from commit]:[filepath]
+   Outputs the content of file in the specified commit
+   
+   $ git ls-tree [8 digit hash code from commit]# To Check the list of files available in that particular commit
+   
+   
+8. Command use in replacement of standard UNIX command.
+   Note:
+   If a earlier commited file is deleted from the working directory, then we have to use "git add file.txt", To stage the changes in stagging area# Here file.txt is the file deleted from the working directory.
+   
+   $ git ls-files # To Check the list of files available in stagging area
 
-   $ git rm [file_name](remove the file from direcory)
+   
+   $ git rm --cached [file_name](Remove the file from stagged/index area)
+
+   $ git rm [file_name](remove the file from working direcory as well as stagging area)# Here if we will use UNIX rm command then we have to stage the changes in staggiong layer, git rm command will directly remove the file from working directory as well as stagging area
+   
+   $ git mv [file1] [file2] #command use to rename or move the file
 
 8. create a branch
    $ git branch(Prompt all branches names )
@@ -169,6 +191,11 @@ and
   $ git log (from here we have to copy the first 8bit of hashcode of various chnages)then
   $ git revert hashcode (or we can return to before last commit using $ git commit HEAD) 
   $ git reset -hard HEAD(Need to check)
+  
+  
+  $ git restore --stagged [file1.txt, file2.txt, *.txt] #restore the file from last commited snapshot to stagging area
+  
+  $ git restore [file1.txt, file2.txt, *.txt] #restore the file from stagging area
 
 
 23.merge conflict(how to solve it )
