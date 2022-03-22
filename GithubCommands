@@ -4,18 +4,24 @@ and that can be downloaded from official website https://git-scm.com/
 
 Notes:
 1. Git command prompt works based on UNIX commands.
-2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named.gitignore . 
-You can find helpful templates for .gitignore files at github.com/github/gitignore.
-$ touch .gitignore(don't create it from using UI, system get confused)
-3. HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits
-when using git checkout, 
-HEAD that always refers to the most recent commit in the current branch.
-HEAD~1 being the second newest commit in the local repo,
+2. The .gitignore file:- Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named .gitignore . 
+    Note:
+    You can find helpful templates for .gitignore files at github.com/github/gitignore.
+    $ touch .gitignore(don't create it from using UI, system get confused)
+3. HEAD: The current/active branch is known as HEAD branch, 
+4. Detached HEAD
+   In rare cases, the HEAD file does NOT contain a branch reference, but a SHA-1 value of a specific revision. This happens when you checkout a specific commit, tag, or remote branch. Your repository is then in a state called Detached HEAD. 
+   
+   HEAD that always refers to the most recent commit in the current branch.
+   HEAD~1 being the second lastest commit in the current branch.
+   
+   Ex:
+   Switch from the local branch (master) to the remote branch (origin/master) and enter a so called ‘detached HEAD state’. This allows you to explore what has been committed to remote repo by your colleagues.
+
 4. The very first time you try to clone a private remote repository, you will be asked to provide username and password (unless already using SSH Key to connect to GitHub). 
 5. After you provide authentication once, Git caches your credentials in memory and hands them out on demand. If the git config credential.helper command return manager, the password is stored in the windows credential manager, if it returns store, password is stored in a .git-credentials file in the user folder and if it returns oskeychain it’s stored in keychain.
-6. Switch from the local branch (master) to the remote branch (origin/master) and enter a so called ‘detached HEAD state’. This allows you to explore what has been committed to remote repo by your colleagues.
 7. git [command] --help #Full summary or git [command] -h #gives short summary
-8. Once we commit the changes to local repo, Files will always be there in stagging area.
+8. Once files are added to stagging area,Files will always be there in stagging area after , even if we commit the changes to local repo from satgging area. 
 
 Commands:
 
@@ -53,7 +59,7 @@ Commands:
    
 3.connect your remote repo to local repo 
 
-   $ git remote add origin "https link from clone the repo in github"(Add the repo/remote with name origin or this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
+   $ git remote add origin "https link from clone the repo in github"(Add the repo/remote with name origin and this will link your remote repo to terminal means whatever the operation performed through git bash are shown in that particular remote repo and local repo )
    Note:
    Here we have added the origin but still we can don't have read/write access, So we can add a SSH key which will ever authenticate our system for any read/write.
    
